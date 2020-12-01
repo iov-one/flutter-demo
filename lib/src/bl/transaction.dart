@@ -12,15 +12,15 @@ Map<String, dynamic> createTransactionData({
         "gas": "2000000"
       },
       "memo": "",
-      "msgs": [
+      "msg": [
         {
           "type": "starname/RegisterAccount",
           "value": {
-            "broker": "star1nrnx8mft8mks3l2akduxdjlf8rwqs8r9l36a78",
+            "broker": "",
             "domain": "cosmos",
             "fee_payer": "",
-            "name": "blin4545",
-            "owner": "star1ayxmc4vqshd9j94hj67r55ppg5hsrhqlmy4dvd",
+            "name": name,
+            "owner": resource,
             "registerer": "star1ayxmc4vqshd9j94hj67r55ppg5hsrhqlmy4dvd",
             "resources": [
               {
