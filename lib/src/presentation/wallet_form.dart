@@ -21,7 +21,6 @@ class WalletFormState extends State<WalletForm> {
     createWallet().then((wallet) async {
       print(wallet.bech32Address);
       await wallet.credit();
-      await Future.delayed(const Duration(seconds: 5));
       await wallet.queryChain();
       return wallet;
     }).then(

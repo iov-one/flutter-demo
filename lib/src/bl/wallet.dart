@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:alan/alan.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:meta/meta.dart';
 
+import 'msg_register_starname_account.dart';
 import 'transaction.dart';
 
 const _url = 'https://iovnscli-rest-api.cluster-galaxynet.iov.one';
@@ -41,11 +43,51 @@ extension WalletExt on Wallet {
       resource: resource,
       name: name,
     );
+
     final stdTx = StdTx.fromJson(data);
 
     final client = http.Client();
     final signer = TxSigner.build(client);
     final signedTx = await signer.signStdTx(stdTx, this);
+    final sender = TxSender.build(client);
+    return sender.broadcastStdTx(
+      signedTx,
+      this,
+      mode: SendMode.MODE_BLOCK,
+    );
+  }
+
+  Future<TxResponse> registerStarnameAccount({
+    @required String resource,
+    @required String name,
+  }) async {
+    final message = MsgRegisterStarnameAccount(
+      broker: '',
+      domain: 'iov',
+      feePayer: '',
+      name: name,
+      owner: bech32Address,
+      registerer: bech32Address,
+      resources: [
+        Resource(
+          resource: resource,
+          uri: 'asset:iov',
+        )
+      ],
+    );
+    final stdTx = TxBuilder.buildStdTx(
+      [message],
+      memo: '',
+      fee: StdFee(
+        gas: '200000',
+        amount: [StdCoin(amount: '200000', denom: 'uvoi')],
+      ),
+    );
+    print(jsonEncode(stdTx.toJson()));
+    final client = http.Client();
+    final signer = TxSigner.build(client);
+    final signedTx = await signer.signStdTx(stdTx, this);
+    print(jsonEncode(signedTx.toJson()));
     final sender = TxSender.build(client);
     return sender.broadcastStdTx(
       signedTx,
@@ -72,7 +114,6 @@ extension WalletExt on Wallet {
 
     final client = http.Client();
     final signer = TxSigner.build(client);
-    print(jsonEncode(stdTx.toJson()));
     final signedTx = await signer.signStdTx(stdTx, this);
     final sender = TxSender.build(client);
     return sender.broadcastStdTx(

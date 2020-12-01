@@ -28,7 +28,11 @@ class TransactionFormState extends State<TransactionForm> {
     setState(() => _isCreating = true);
 
     try {
-      final result = await wallet.createTransaction(
+      // final result = await wallet.createTransaction(
+      //   resource: _address.text,
+      //   name: _name.text,
+      // );
+      final result = await wallet.registerStarnameAccount(
         resource: _address.text,
         name: _name.text,
       );
@@ -38,9 +42,9 @@ class TransactionFormState extends State<TransactionForm> {
           ? 'Transaction succeeded.'
           : 'Transaction failed.';
       Scaffold.of(context).showSnackBar(SnackBar(content: Text(text)));
-    // } on Exception catch (e) {
-    //   print(e);
-    //   Scaffold.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+    } on Exception catch (e) {
+      print(e);
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
     } finally {
       setState(() => _isCreating = false);
     }
