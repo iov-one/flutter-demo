@@ -1,10 +1,11 @@
 import 'package:alan/alan.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../bl/wallet.dart';
+import 'package:starname_demo/src/bl/wallet.dart';
 
 class TransactionForm extends StatefulWidget {
+  const TransactionForm({Key key}) : super(key: key);
+
   @override
   TransactionFormState createState() => TransactionFormState();
 }
@@ -15,13 +16,13 @@ class TransactionFormState extends State<TransactionForm> {
   final _address = TextEditingController();
   bool _isCreating = false;
 
-  void _createTransaction() async {
+  Future<void> _createTransaction() async {
     if (!_formKey.currentState.validate()) return;
 
     final wallet = context.read<Wallet>();
     if (wallet == null) {
-      Scaffold.of(context)
-          .showSnackBar(SnackBar(content: Text('Create a wallet first.')));
+      Scaffold.of(context).showSnackBar(
+          const SnackBar(content: Text('Create a wallet first.')));
       return;
     }
 
@@ -57,9 +58,9 @@ class TransactionFormState extends State<TransactionForm> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   labelText: 'Starname',
@@ -72,10 +73,10 @@ class TransactionFormState extends State<TransactionForm> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: TextFormField(
                 controller: _address,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   labelText: 'Ethereum address',
@@ -86,10 +87,10 @@ class TransactionFormState extends State<TransactionForm> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 16),
               child: ElevatedButton(
                 onPressed: _isCreating ? null : _createTransaction,
-                child: Text('Register'),
+                child: const Text('Register'),
               ),
             ),
           ],

@@ -10,5 +10,5 @@ void main() {
 
   initializeReflectable();
 
-  runApp(App());
+  runApp(const App());
 }

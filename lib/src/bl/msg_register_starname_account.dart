@@ -17,6 +17,9 @@ class MsgRegisterStarnameAccount extends StdMsg {
     @required this.resources,
   });
 
+  factory MsgRegisterStarnameAccount.fromJson(Map<String, dynamic> json) =>
+      _$MsgRegisterStarnameAccountFromJson(json);
+
   final String broker;
 
   final String domain;
@@ -31,10 +34,6 @@ class MsgRegisterStarnameAccount extends StdMsg {
   final String registerer;
 
   final List<Resource> resources;
-
-  factory MsgRegisterStarnameAccount.fromJson(Map<String, dynamic> json) {
-    return _$MsgRegisterStarnameAccountFromJson(json);
-  }
 
   @override
   Map<String, dynamic> asJson() => _$MsgRegisterStarnameAccountToJson(this);
@@ -51,9 +50,7 @@ class MsgRegisterStarnameAccount extends StdMsg {
       ];
 
   @override
-  Exception validate() {
-    return null;
-  }
+  Exception validate() => null;
 }
 
 @JsonSerializable()
@@ -63,11 +60,11 @@ class Resource {
     @required this.uri,
   });
 
-  final String resource;
-  final String uri;
-
   factory Resource.fromJson(Map<String, dynamic> json) =>
       _$ResourceFromJson(json);
+
+  final String resource;
+  final String uri;
 
   Map<String, dynamic> toJson() => _$ResourceToJson(this);
 }
