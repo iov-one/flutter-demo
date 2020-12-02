@@ -19,8 +19,8 @@ final mnemonic = 'year december unable '
         'during apology code'
     .split(' ');
 
-Wallet _createWallet([dynamic _]) => Wallet.derive(
-      mnemonic,
+Wallet _createWallet([dynamic _]) => Wallet.random(
+      // mnemonic,
       _networkInfo,
       derivationPath: "m/44'/234'/0'/0/0",
     );
@@ -28,6 +28,13 @@ Wallet _createWallet([dynamic _]) => Wallet.derive(
 Future<Wallet> createWallet() => compute(_createWallet, null);
 
 extension WalletExt on Wallet {
+  Future<void> credit() async {
+    final client = http.Client();
+    final result = await client.get(
+        'https://faucet.cluster-galaxynet.iov.one/credit?address=$bech32Address');
+    print(result.body);
+  }
+
   Future<TxResponse> registerStarnameAccount({
     @required String resource,
     @required String name,

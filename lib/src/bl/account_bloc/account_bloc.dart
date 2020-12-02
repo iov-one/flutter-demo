@@ -57,7 +57,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         yield const AccountState.accountFailure();
         yield const AccountState.noAccount();
       }
-    } on Exception {
+    } on Exception catch (e) {
+      print(e);
       yield const AccountState.accountFailure();
       yield const AccountState.noAccount();
     }

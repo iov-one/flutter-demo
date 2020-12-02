@@ -21,6 +21,7 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
     yield const WalletState.creating();
     try {
       final wallet = await createWallet();
+      await wallet.credit();
       yield WalletState.success(wallet);
       print(wallet.bech32Address);
     } on Exception {
