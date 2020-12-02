@@ -29,6 +29,10 @@ class AccountFormState extends State<AccountForm> {
             const SnackBar(content: Text('Account creating failed'))),
         accountSuccess: () => Scaffold.of(context)
             .showSnackBar(const SnackBar(content: Text('Account created'))),
+        accountReady: (a) {
+          _name.text = a.name;
+          _address.text = a.ethAddress;
+        },
         orElse: () {},
       );
 
