@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starname_demo/src/bl/wallet_bloc.dart';
-import 'package:starname_demo/src/bl/wallet_event.dart';
-import 'package:starname_demo/src/bl/wallet_state.dart';
+import 'package:starname_demo/src/bl/account_bloc/account_bloc.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_bloc.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_event.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_state.dart';
+import 'package:starname_demo/src/presentation/account_form.dart';
 import 'package:starname_demo/src/presentation/app.dart';
-import 'package:starname_demo/src/presentation/transaction_form.dart';
 import 'package:starname_demo/src/presentation/wallet_form.dart';
 
 class MainScreen extends StatelessWidget {
@@ -33,7 +34,10 @@ class MainScreen extends StatelessWidget {
                   children: [
                     Text(wallet.bech32Address),
                     const SizedBox(height: 32),
-                    const TransactionForm(),
+                    BlocProvider(
+                      create: (context) => AccountBloc(wallet),
+                      child: const AccountForm(),
+                    ),
                   ],
                 ),
               ),

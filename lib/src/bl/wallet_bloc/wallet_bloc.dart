@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starname_demo/src/bl/wallet.dart';
-import 'package:starname_demo/src/bl/wallet_event.dart';
-import 'package:starname_demo/src/bl/wallet_state.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_event.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_state.dart';
 
 class WalletBloc extends Bloc<WalletEvent, WalletState> {
   WalletBloc() : super(const WalletState.none());

@@ -13,9 +13,11 @@ final _networkInfo = NetworkInfo(
   lcdUrl: _url,
 );
 
-final mnemonic =
-    'year december unable size cute swamp lock season retreat during apology code'
-        .split(' ');
+final mnemonic = 'year december unable '
+        'size cute swamp '
+        'lock season retreat '
+        'during apology code'
+    .split(' ');
 
 Wallet _createWallet([dynamic _]) => Wallet.derive(
       mnemonic,
@@ -26,13 +28,6 @@ Wallet _createWallet([dynamic _]) => Wallet.derive(
 Future<Wallet> createWallet() => compute(_createWallet, null);
 
 extension WalletExt on Wallet {
-  Future<void> credit() async {
-    final client = http.Client();
-    final result = await client.get(
-        'https://faucet.cluster-galaxynet.iov.one/credit?address=$bech32Address');
-    print(result.body);
-  }
-
   Future<TxResponse> registerStarnameAccount({
     @required String resource,
     @required String name,
@@ -58,7 +53,6 @@ extension WalletExt on Wallet {
         amount: [StdCoin(amount: '200000', denom: 'uvoi')],
       ),
     );
-    print(jsonEncode(stdTx.toJson()));
     final client = http.Client();
     final signer = TxSigner.build(client);
     final signedTx = await signer.signStdTx(stdTx, this);

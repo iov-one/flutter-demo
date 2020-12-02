@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starname_demo/src/bl/wallet_bloc.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_bloc.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_event.dart';
 import 'package:starname_demo/src/presentation/main_screen.dart';
 
 class App extends StatelessWidget {
@@ -10,7 +11,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         title: appTitle,
         home: BlocProvider(
-          create: (_) => WalletBloc(),
+          create: (_) => WalletBloc()..add(const WalletEvent.initialized()),
           child: const MainScreen(),
         ),
       );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:starname_demo/src/bl/wallet_bloc.dart';
-import 'package:starname_demo/src/bl/wallet_event.dart';
-import 'package:starname_demo/src/bl/wallet_state.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_bloc.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_event.dart';
+import 'package:starname_demo/src/bl/wallet_bloc/wallet_state.dart';
 import 'package:starname_demo/src/presentation/app.dart';
 
 class WalletForm extends StatelessWidget {
