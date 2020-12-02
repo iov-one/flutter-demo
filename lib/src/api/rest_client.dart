@@ -5,7 +5,9 @@ import 'package:retrofit/http.dart';
 
 part 'rest_client.g.dart';
 
-@RestApi(baseUrl: 'https://iovnscli-rest-api.cluster-galaxynet.iov.one')
+const restApiBaseUrl = 'https://iovnscli-rest-api.cluster-galaxynet.iov.one';
+
+@RestApi(baseUrl: restApiBaseUrl)
 abstract class RestClient {
   factory RestClient({String baseUrl}) {
     final dio = Dio()
