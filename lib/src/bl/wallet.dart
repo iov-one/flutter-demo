@@ -77,7 +77,6 @@ extension WalletExt on Wallet {
     );
     final stdTx = TxBuilder.buildStdTx(
       [message],
-      memo: '',
       fee: StdFee(
         gas: '200000',
         amount: [StdCoin(amount: '200000', denom: 'uvoi')],

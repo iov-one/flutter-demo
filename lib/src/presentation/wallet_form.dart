@@ -18,12 +18,7 @@ class WalletFormState extends State<WalletForm> {
 
   void _onCreateWalletClicked() {
     setState(() => _isCreatingWallet = true);
-    createWallet().then((wallet) async {
-      print(wallet.bech32Address);
-      await wallet.credit();
-      await wallet.queryChain();
-      return wallet;
-    }).then(
+    createWallet().then(
       (wallet) {
         widget.onWalletUpdated(wallet);
         setState(() => _isCreatingWallet = false);

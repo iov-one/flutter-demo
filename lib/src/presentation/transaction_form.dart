@@ -60,7 +60,11 @@ class TransactionFormState extends State<TransactionForm> {
               padding: EdgeInsets.all(16.0),
               child: TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'starname ex: antoine*iov',
+                  border: OutlineInputBorder(),
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  labelText: 'Starname',
+                  hintText: 'ex: antoine',
+                  suffix: Text('*iov'),
                 ),
                 controller: _name,
                 validator: (value) =>
@@ -72,7 +76,10 @@ class TransactionFormState extends State<TransactionForm> {
               child: TextFormField(
                 controller: _address,
                 decoration: InputDecoration(
-                  hintText: 'ethereum address: 0x11AE8..',
+                  border: OutlineInputBorder(),
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  labelText: 'Ethereum address',
+                  hintText: 'ex: 0x11AE8..',
                 ),
                 validator: (value) =>
                     value.isEmpty ? 'Please enter some text' : null,
