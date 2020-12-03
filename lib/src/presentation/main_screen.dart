@@ -34,8 +34,18 @@ class MainScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(wallet.bech32Address),
-                    const SizedBox(height: 32),
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          labelText: 'Wallet address',
+                        ),
+                        initialValue: wallet.bech32Address,
+                        readOnly: true,
+                      ),
+                    ),
                     BlocProvider(
                       create: (context) => AccountBloc(wallet, RestClient())
                         ..add(const AccountEvent.initialized()),

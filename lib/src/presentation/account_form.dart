@@ -32,10 +32,10 @@ class AccountFormState extends State<AccountForm> {
 
   void _onStateChanged(BuildContext context, AccountState state) =>
       state.maybeWhen<void>(
-        accountFailure: () => Scaffold.of(context).showSnackBar(
-            const SnackBar(content: Text('Account creating failed'))),
+        accountFailure: () => Scaffold.of(context)
+            .showSnackBar(const SnackBar(content: Text('Operation failed'))),
         accountSuccess: () => Scaffold.of(context)
-            .showSnackBar(const SnackBar(content: Text('Account created'))),
+            .showSnackBar(const SnackBar(content: Text('Operation succeeded'))),
         accountReady: (a) {
           _name.text = a.name;
           _address.text = a.ethAddress;
