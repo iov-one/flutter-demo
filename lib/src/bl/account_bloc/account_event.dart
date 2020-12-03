@@ -10,4 +10,6 @@ abstract class AccountEvent implements _$AccountEvent {
   const factory AccountEvent.initialized() = Initialized;
 
   const factory AccountEvent.created(Account account) = Created;
+
+  const factory AccountEvent.updated(Account account) = Updated;
 }

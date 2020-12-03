@@ -3,17 +3,19 @@
 
 import 'dart:core';
 import 'package:alan/types/std_msg.dart' as prefix0;
-import 'package:alan/x/bank/types/messages/msg_send.dart' as prefix7;
+import 'package:alan/x/bank/types/messages/msg_send.dart' as prefix8;
 import 'package:alan/x/staking/types/messages/msg_begin_redelegate.dart'
-    as prefix6;
+    as prefix7;
 import 'package:alan/x/staking/types/messages/msg_create_validator.dart'
-    as prefix4;
-import 'package:alan/x/staking/types/messages/msg_delegate.dart' as prefix2;
-import 'package:alan/x/staking/types/messages/msg_edit_validator.dart'
     as prefix5;
-import 'package:alan/x/staking/types/messages/msg_undelegate.dart' as prefix3;
+import 'package:alan/x/staking/types/messages/msg_delegate.dart' as prefix3;
+import 'package:alan/x/staking/types/messages/msg_edit_validator.dart'
+    as prefix6;
+import 'package:alan/x/staking/types/messages/msg_undelegate.dart' as prefix4;
 import 'package:starname_demo/src/bl/msg_register_starname_account.dart'
     as prefix1;
+import 'package:starname_demo/src/bl/msg_replace_starname_account.dart'
+    as prefix2;
 
 // ignore_for_file: prefer_adjacent_string_concatenation
 // ignore_for_file: prefer_collection_literals
@@ -70,8 +72,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null,
             {}),
         r.NonGenericClassMirrorImpl(
-            r'MsgDelegate',
-            r'.MsgDelegate',
+            r'MsgReplaceStarnameAccount',
+            r'.MsgReplaceStarnameAccount',
             7,
             1,
             const prefix0.Reflector(),
@@ -82,14 +84,16 @@ final _data = <r.Reflectable, r.ReflectorData>{
             {},
             {},
             {
-              r'': (b) => ({delegatorAddress, validatorAddress, amount}) => b
-                  ? prefix2.MsgDelegate(
-                      amount: amount,
-                      delegatorAddress: delegatorAddress,
-                      validatorAddress: validatorAddress)
+              r'': (b) => ({domain, feePayer, name, owner, newResources}) => b
+                  ? prefix2.MsgReplaceStarnameAccount(
+                      domain: domain,
+                      feePayer: feePayer,
+                      name: name,
+                      newResources: newResources,
+                      owner: owner)
                   : null,
-              r'fromJson': (b) =>
-                  (json) => b ? prefix2.MsgDelegate.fromJson(json) : null
+              r'fromJson': (b) => (json) =>
+                  b ? prefix2.MsgReplaceStarnameAccount.fromJson(json) : null
             },
             -1,
             -1,
@@ -97,8 +101,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null,
             {}),
         r.NonGenericClassMirrorImpl(
-            r'MsgUndelegate',
-            r'.MsgUndelegate',
+            r'MsgDelegate',
+            r'.MsgDelegate',
             7,
             2,
             const prefix0.Reflector(),
@@ -110,13 +114,40 @@ final _data = <r.Reflectable, r.ReflectorData>{
             {},
             {
               r'': (b) => ({delegatorAddress, validatorAddress, amount}) => b
-                  ? prefix3.MsgUndelegate(
+                  ? prefix3.MsgDelegate(
                       amount: amount,
                       delegatorAddress: delegatorAddress,
                       validatorAddress: validatorAddress)
                   : null,
               r'fromJson': (b) =>
-                  (json) => b ? prefix3.MsgUndelegate.fromJson(json) : null
+                  (json) => b ? prefix3.MsgDelegate.fromJson(json) : null
+            },
+            -1,
+            -1,
+            const <int>[-1],
+            null,
+            {}),
+        r.NonGenericClassMirrorImpl(
+            r'MsgUndelegate',
+            r'.MsgUndelegate',
+            7,
+            3,
+            const prefix0.Reflector(),
+            const <int>[-1],
+            null,
+            null,
+            -1,
+            {},
+            {},
+            {
+              r'': (b) => ({delegatorAddress, validatorAddress, amount}) => b
+                  ? prefix4.MsgUndelegate(
+                      amount: amount,
+                      delegatorAddress: delegatorAddress,
+                      validatorAddress: validatorAddress)
+                  : null,
+              r'fromJson': (b) =>
+                  (json) => b ? prefix4.MsgUndelegate.fromJson(json) : null
             },
             -1,
             -1,
@@ -127,7 +158,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'MsgCreateValidator',
             r'.MsgCreateValidator',
             7,
-            3,
+            4,
             const prefix0.Reflector(),
             const <int>[-1],
             null,
@@ -145,7 +176,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
                       publicKey,
                       value}) =>
                   b
-                      ? prefix4.MsgCreateValidator(
+                      ? prefix5.MsgCreateValidator(
                           commission: commission,
                           delegatorAddress: delegatorAddress,
                           description: description,
@@ -155,7 +186,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
                           value: value)
                       : null,
               r'fromJson': (b) =>
-                  (json) => b ? prefix4.MsgCreateValidator.fromJson(json) : null
+                  (json) => b ? prefix5.MsgCreateValidator.fromJson(json) : null
             },
             -1,
             -1,
@@ -166,7 +197,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'MsgEditValidator',
             r'.MsgEditValidator',
             7,
-            4,
+            5,
             const prefix0.Reflector(),
             const <int>[-1],
             null,
@@ -181,14 +212,14 @@ final _data = <r.Reflectable, r.ReflectorData>{
                       commissionRate,
                       minSelfDelegation}) =>
                   b
-                      ? prefix5.MsgEditValidator(
+                      ? prefix6.MsgEditValidator(
                           commissionRate: commissionRate,
                           description: description,
                           minSelfDelegation: minSelfDelegation,
                           validatorAddress: validatorAddress)
                       : null,
               r'fromJson': (b) =>
-                  (json) => b ? prefix5.MsgEditValidator.fromJson(json) : null
+                  (json) => b ? prefix6.MsgEditValidator.fromJson(json) : null
             },
             -1,
             -1,
@@ -199,7 +230,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'MsgBeginRedelegate',
             r'.MsgBeginRedelegate',
             7,
-            5,
+            6,
             const prefix0.Reflector(),
             const <int>[-1],
             null,
@@ -214,7 +245,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
                       validatorDestinationAddress,
                       amount}) =>
                   b
-                      ? prefix6.MsgBeginRedelegate(
+                      ? prefix7.MsgBeginRedelegate(
                           amount: amount,
                           delegatorAddress: delegatorAddress,
                           validatorDestinationAddress:
@@ -222,7 +253,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
                           validatorSourceAddress: validatorSourceAddress)
                       : null,
               r'fromJson': (b) =>
-                  (json) => b ? prefix6.MsgBeginRedelegate.fromJson(json) : null
+                  (json) => b ? prefix7.MsgBeginRedelegate.fromJson(json) : null
             },
             -1,
             -1,
@@ -233,7 +264,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'MsgSend',
             r'.MsgSend',
             7,
-            6,
+            7,
             const prefix0.Reflector(),
             const <int>[-1],
             null,
@@ -243,13 +274,13 @@ final _data = <r.Reflectable, r.ReflectorData>{
             {},
             {
               r'': (b) => ({fromAddress, toAddress, amount}) => b
-                  ? prefix7.MsgSend(
+                  ? prefix8.MsgSend(
                       amount: amount,
                       fromAddress: fromAddress,
                       toAddress: toAddress)
                   : null,
               r'fromJson': (b) =>
-                  (json) => b ? prefix7.MsgSend.fromJson(json) : null
+                  (json) => b ? prefix8.MsgSend.fromJson(json) : null
             },
             -1,
             -1,
@@ -261,14 +292,15 @@ final _data = <r.Reflectable, r.ReflectorData>{
       null,
       <Type>[
         prefix1.MsgRegisterStarnameAccount,
-        prefix2.MsgDelegate,
-        prefix3.MsgUndelegate,
-        prefix4.MsgCreateValidator,
-        prefix5.MsgEditValidator,
-        prefix6.MsgBeginRedelegate,
-        prefix7.MsgSend
+        prefix2.MsgReplaceStarnameAccount,
+        prefix3.MsgDelegate,
+        prefix4.MsgUndelegate,
+        prefix5.MsgCreateValidator,
+        prefix6.MsgEditValidator,
+        prefix7.MsgBeginRedelegate,
+        prefix8.MsgSend
       ],
-      7,
+      8,
       {},
       {},
       null,
@@ -287,6 +319,11 @@ final _data = <r.Reflectable, r.ReflectorData>{
           ]
         ],
         const [1, 0, null],
+        const [
+          0,
+          0,
+          const [#domain, #feePayer, #name, #owner, #newResources]
+        ],
         const [
           0,
           0,

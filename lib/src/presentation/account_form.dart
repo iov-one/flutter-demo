@@ -23,6 +23,13 @@ class AccountFormState extends State<AccountForm> {
     context.read<AccountBloc>().add(AccountEvent.created(account));
   }
 
+  Future<void> _updateAccount() async {
+    if (!_formKey.currentState.validate()) return;
+
+    final account = Account(name: _name.text, ethAddress: _address.text);
+    context.read<AccountBloc>().add(AccountEvent.updated(account));
+  }
+
   void _onStateChanged(BuildContext context, AccountState state) =>
       state.maybeWhen<void>(
         accountFailure: () => Scaffold.of(context).showSnackBar(
@@ -69,15 +76,31 @@ class AccountFormState extends State<AccountForm> {
                     labelText: 'Ethereum address',
                     hintText: 'ex: 0x11AE8..',
                   ),
-                  readOnly: state is! NoAccount,
+                  readOnly: state is! NoAccount && state is! AccountReady,
                   validator: _requiredValidator,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
-                child: ElevatedButton(
-                  onPressed: state is NoAccount ? _createAccount : null,
-                  child: const Text('Register'),
+                child: state.when(
+                  noAccount: () => ElevatedButton(
+                    onPressed: _createAccount,
+                    child: const Text('Register'),
+                  ),
+                  creatingAccount: () => const ElevatedButton(
+                    onPressed: null,
+                    child: Text('Register'),
+                  ),
+                  updatingAccount: () => const ElevatedButton(
+                    onPressed: null,
+                    child: Text('Update'),
+                  ),
+                  accountFailure: () => Container(),
+                  accountSuccess: () => Container(),
+                  accountReady: (_) => ElevatedButton(
+                    onPressed: _updateAccount,
+                    child: const Text('Update'),
+                  ),
                 ),
               ),
             ],

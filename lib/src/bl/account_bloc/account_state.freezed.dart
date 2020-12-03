@@ -19,8 +19,13 @@ class _$AccountStateTearOff {
   }
 
 // ignore: unused_element
-  ProcessingAccount processingAccount() {
-    return const ProcessingAccount();
+  CreatingAccount creatingAccount() {
+    return const CreatingAccount();
+  }
+
+// ignore: unused_element
+  UpdatingAccount updatingAccount() {
+    return const UpdatingAccount();
   }
 
 // ignore: unused_element
@@ -50,7 +55,8 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult noAccount(),
-    @required TResult processingAccount(),
+    @required TResult creatingAccount(),
+    @required TResult updatingAccount(),
     @required TResult accountFailure(),
     @required TResult accountSuccess(),
     @required TResult accountReady(Account account),
@@ -58,7 +64,8 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult noAccount(),
-    TResult processingAccount(),
+    TResult creatingAccount(),
+    TResult updatingAccount(),
     TResult accountFailure(),
     TResult accountSuccess(),
     TResult accountReady(Account account),
@@ -67,7 +74,8 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult noAccount(NoAccount value),
-    @required TResult processingAccount(ProcessingAccount value),
+    @required TResult creatingAccount(CreatingAccount value),
+    @required TResult updatingAccount(UpdatingAccount value),
     @required TResult accountFailure(AccountFailure value),
     @required TResult accountSuccess(AccountSuccess value),
     @required TResult accountReady(AccountReady value),
@@ -75,7 +83,8 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult noAccount(NoAccount value),
-    TResult processingAccount(ProcessingAccount value),
+    TResult creatingAccount(CreatingAccount value),
+    TResult updatingAccount(UpdatingAccount value),
     TResult accountFailure(AccountFailure value),
     TResult accountSuccess(AccountSuccess value),
     TResult accountReady(AccountReady value),
@@ -136,13 +145,15 @@ class _$NoAccount extends NoAccount {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult noAccount(),
-    @required TResult processingAccount(),
+    @required TResult creatingAccount(),
+    @required TResult updatingAccount(),
     @required TResult accountFailure(),
     @required TResult accountSuccess(),
     @required TResult accountReady(Account account),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
@@ -153,7 +164,8 @@ class _$NoAccount extends NoAccount {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult noAccount(),
-    TResult processingAccount(),
+    TResult creatingAccount(),
+    TResult updatingAccount(),
     TResult accountFailure(),
     TResult accountSuccess(),
     TResult accountReady(Account account),
@@ -170,13 +182,15 @@ class _$NoAccount extends NoAccount {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult noAccount(NoAccount value),
-    @required TResult processingAccount(ProcessingAccount value),
+    @required TResult creatingAccount(CreatingAccount value),
+    @required TResult updatingAccount(UpdatingAccount value),
     @required TResult accountFailure(AccountFailure value),
     @required TResult accountSuccess(AccountSuccess value),
     @required TResult accountReady(AccountReady value),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
@@ -187,7 +201,8 @@ class _$NoAccount extends NoAccount {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult noAccount(NoAccount value),
-    TResult processingAccount(ProcessingAccount value),
+    TResult creatingAccount(CreatingAccount value),
+    TResult updatingAccount(UpdatingAccount value),
     TResult accountFailure(AccountFailure value),
     TResult accountSuccess(AccountSuccess value),
     TResult accountReady(AccountReady value),
@@ -207,36 +222,36 @@ abstract class NoAccount extends AccountState {
 }
 
 /// @nodoc
-abstract class $ProcessingAccountCopyWith<$Res> {
-  factory $ProcessingAccountCopyWith(
-          ProcessingAccount value, $Res Function(ProcessingAccount) then) =
-      _$ProcessingAccountCopyWithImpl<$Res>;
+abstract class $CreatingAccountCopyWith<$Res> {
+  factory $CreatingAccountCopyWith(
+          CreatingAccount value, $Res Function(CreatingAccount) then) =
+      _$CreatingAccountCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ProcessingAccountCopyWithImpl<$Res>
+class _$CreatingAccountCopyWithImpl<$Res>
     extends _$AccountStateCopyWithImpl<$Res>
-    implements $ProcessingAccountCopyWith<$Res> {
-  _$ProcessingAccountCopyWithImpl(
-      ProcessingAccount _value, $Res Function(ProcessingAccount) _then)
-      : super(_value, (v) => _then(v as ProcessingAccount));
+    implements $CreatingAccountCopyWith<$Res> {
+  _$CreatingAccountCopyWithImpl(
+      CreatingAccount _value, $Res Function(CreatingAccount) _then)
+      : super(_value, (v) => _then(v as CreatingAccount));
 
   @override
-  ProcessingAccount get _value => super._value as ProcessingAccount;
+  CreatingAccount get _value => super._value as CreatingAccount;
 }
 
 /// @nodoc
-class _$ProcessingAccount extends ProcessingAccount {
-  const _$ProcessingAccount() : super._();
+class _$CreatingAccount extends CreatingAccount {
+  const _$CreatingAccount() : super._();
 
   @override
   String toString() {
-    return 'AccountState.processingAccount()';
+    return 'AccountState.creatingAccount()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ProcessingAccount);
+    return identical(this, other) || (other is CreatingAccount);
   }
 
   @override
@@ -246,32 +261,35 @@ class _$ProcessingAccount extends ProcessingAccount {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult noAccount(),
-    @required TResult processingAccount(),
+    @required TResult creatingAccount(),
+    @required TResult updatingAccount(),
     @required TResult accountFailure(),
     @required TResult accountSuccess(),
     @required TResult accountReady(Account account),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
-    return processingAccount();
+    return creatingAccount();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult noAccount(),
-    TResult processingAccount(),
+    TResult creatingAccount(),
+    TResult updatingAccount(),
     TResult accountFailure(),
     TResult accountSuccess(),
     TResult accountReady(Account account),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (processingAccount != null) {
-      return processingAccount();
+    if (creatingAccount != null) {
+      return creatingAccount();
     }
     return orElse();
   }
@@ -280,40 +298,159 @@ class _$ProcessingAccount extends ProcessingAccount {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult noAccount(NoAccount value),
-    @required TResult processingAccount(ProcessingAccount value),
+    @required TResult creatingAccount(CreatingAccount value),
+    @required TResult updatingAccount(UpdatingAccount value),
     @required TResult accountFailure(AccountFailure value),
     @required TResult accountSuccess(AccountSuccess value),
     @required TResult accountReady(AccountReady value),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
-    return processingAccount(this);
+    return creatingAccount(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult noAccount(NoAccount value),
-    TResult processingAccount(ProcessingAccount value),
+    TResult creatingAccount(CreatingAccount value),
+    TResult updatingAccount(UpdatingAccount value),
     TResult accountFailure(AccountFailure value),
     TResult accountSuccess(AccountSuccess value),
     TResult accountReady(AccountReady value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (processingAccount != null) {
-      return processingAccount(this);
+    if (creatingAccount != null) {
+      return creatingAccount(this);
     }
     return orElse();
   }
 }
 
-abstract class ProcessingAccount extends AccountState {
-  const ProcessingAccount._() : super._();
-  const factory ProcessingAccount() = _$ProcessingAccount;
+abstract class CreatingAccount extends AccountState {
+  const CreatingAccount._() : super._();
+  const factory CreatingAccount() = _$CreatingAccount;
+}
+
+/// @nodoc
+abstract class $UpdatingAccountCopyWith<$Res> {
+  factory $UpdatingAccountCopyWith(
+          UpdatingAccount value, $Res Function(UpdatingAccount) then) =
+      _$UpdatingAccountCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UpdatingAccountCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res>
+    implements $UpdatingAccountCopyWith<$Res> {
+  _$UpdatingAccountCopyWithImpl(
+      UpdatingAccount _value, $Res Function(UpdatingAccount) _then)
+      : super(_value, (v) => _then(v as UpdatingAccount));
+
+  @override
+  UpdatingAccount get _value => super._value as UpdatingAccount;
+}
+
+/// @nodoc
+class _$UpdatingAccount extends UpdatingAccount {
+  const _$UpdatingAccount() : super._();
+
+  @override
+  String toString() {
+    return 'AccountState.updatingAccount()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is UpdatingAccount);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult noAccount(),
+    @required TResult creatingAccount(),
+    @required TResult updatingAccount(),
+    @required TResult accountFailure(),
+    @required TResult accountSuccess(),
+    @required TResult accountReady(Account account),
+  }) {
+    assert(noAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
+    assert(accountFailure != null);
+    assert(accountSuccess != null);
+    assert(accountReady != null);
+    return updatingAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult noAccount(),
+    TResult creatingAccount(),
+    TResult updatingAccount(),
+    TResult accountFailure(),
+    TResult accountSuccess(),
+    TResult accountReady(Account account),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (updatingAccount != null) {
+      return updatingAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult noAccount(NoAccount value),
+    @required TResult creatingAccount(CreatingAccount value),
+    @required TResult updatingAccount(UpdatingAccount value),
+    @required TResult accountFailure(AccountFailure value),
+    @required TResult accountSuccess(AccountSuccess value),
+    @required TResult accountReady(AccountReady value),
+  }) {
+    assert(noAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
+    assert(accountFailure != null);
+    assert(accountSuccess != null);
+    assert(accountReady != null);
+    return updatingAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult noAccount(NoAccount value),
+    TResult creatingAccount(CreatingAccount value),
+    TResult updatingAccount(UpdatingAccount value),
+    TResult accountFailure(AccountFailure value),
+    TResult accountSuccess(AccountSuccess value),
+    TResult accountReady(AccountReady value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (updatingAccount != null) {
+      return updatingAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdatingAccount extends AccountState {
+  const UpdatingAccount._() : super._();
+  const factory UpdatingAccount() = _$UpdatingAccount;
 }
 
 /// @nodoc
@@ -356,13 +493,15 @@ class _$AccountFailure extends AccountFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult noAccount(),
-    @required TResult processingAccount(),
+    @required TResult creatingAccount(),
+    @required TResult updatingAccount(),
     @required TResult accountFailure(),
     @required TResult accountSuccess(),
     @required TResult accountReady(Account account),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
@@ -373,7 +512,8 @@ class _$AccountFailure extends AccountFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult noAccount(),
-    TResult processingAccount(),
+    TResult creatingAccount(),
+    TResult updatingAccount(),
     TResult accountFailure(),
     TResult accountSuccess(),
     TResult accountReady(Account account),
@@ -390,13 +530,15 @@ class _$AccountFailure extends AccountFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult noAccount(NoAccount value),
-    @required TResult processingAccount(ProcessingAccount value),
+    @required TResult creatingAccount(CreatingAccount value),
+    @required TResult updatingAccount(UpdatingAccount value),
     @required TResult accountFailure(AccountFailure value),
     @required TResult accountSuccess(AccountSuccess value),
     @required TResult accountReady(AccountReady value),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
@@ -407,7 +549,8 @@ class _$AccountFailure extends AccountFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult noAccount(NoAccount value),
-    TResult processingAccount(ProcessingAccount value),
+    TResult creatingAccount(CreatingAccount value),
+    TResult updatingAccount(UpdatingAccount value),
     TResult accountFailure(AccountFailure value),
     TResult accountSuccess(AccountSuccess value),
     TResult accountReady(AccountReady value),
@@ -466,13 +609,15 @@ class _$AccountSuccess extends AccountSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult noAccount(),
-    @required TResult processingAccount(),
+    @required TResult creatingAccount(),
+    @required TResult updatingAccount(),
     @required TResult accountFailure(),
     @required TResult accountSuccess(),
     @required TResult accountReady(Account account),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
@@ -483,7 +628,8 @@ class _$AccountSuccess extends AccountSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult noAccount(),
-    TResult processingAccount(),
+    TResult creatingAccount(),
+    TResult updatingAccount(),
     TResult accountFailure(),
     TResult accountSuccess(),
     TResult accountReady(Account account),
@@ -500,13 +646,15 @@ class _$AccountSuccess extends AccountSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult noAccount(NoAccount value),
-    @required TResult processingAccount(ProcessingAccount value),
+    @required TResult creatingAccount(CreatingAccount value),
+    @required TResult updatingAccount(UpdatingAccount value),
     @required TResult accountFailure(AccountFailure value),
     @required TResult accountSuccess(AccountSuccess value),
     @required TResult accountReady(AccountReady value),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
@@ -517,7 +665,8 @@ class _$AccountSuccess extends AccountSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult noAccount(NoAccount value),
-    TResult processingAccount(ProcessingAccount value),
+    TResult creatingAccount(CreatingAccount value),
+    TResult updatingAccount(UpdatingAccount value),
     TResult accountFailure(AccountFailure value),
     TResult accountSuccess(AccountSuccess value),
     TResult accountReady(AccountReady value),
@@ -610,13 +759,15 @@ class _$AccountReady extends AccountReady {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult noAccount(),
-    @required TResult processingAccount(),
+    @required TResult creatingAccount(),
+    @required TResult updatingAccount(),
     @required TResult accountFailure(),
     @required TResult accountSuccess(),
     @required TResult accountReady(Account account),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
@@ -627,7 +778,8 @@ class _$AccountReady extends AccountReady {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult noAccount(),
-    TResult processingAccount(),
+    TResult creatingAccount(),
+    TResult updatingAccount(),
     TResult accountFailure(),
     TResult accountSuccess(),
     TResult accountReady(Account account),
@@ -644,13 +796,15 @@ class _$AccountReady extends AccountReady {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult noAccount(NoAccount value),
-    @required TResult processingAccount(ProcessingAccount value),
+    @required TResult creatingAccount(CreatingAccount value),
+    @required TResult updatingAccount(UpdatingAccount value),
     @required TResult accountFailure(AccountFailure value),
     @required TResult accountSuccess(AccountSuccess value),
     @required TResult accountReady(AccountReady value),
   }) {
     assert(noAccount != null);
-    assert(processingAccount != null);
+    assert(creatingAccount != null);
+    assert(updatingAccount != null);
     assert(accountFailure != null);
     assert(accountSuccess != null);
     assert(accountReady != null);
@@ -661,7 +815,8 @@ class _$AccountReady extends AccountReady {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult noAccount(NoAccount value),
-    TResult processingAccount(ProcessingAccount value),
+    TResult creatingAccount(CreatingAccount value),
+    TResult updatingAccount(UpdatingAccount value),
     TResult accountFailure(AccountFailure value),
     TResult accountSuccess(AccountSuccess value),
     TResult accountReady(AccountReady value),

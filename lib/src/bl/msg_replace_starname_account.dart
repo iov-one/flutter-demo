@@ -3,51 +3,38 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:starname_demo/src/bl/resource.dart';
 
-part 'msg_register_starname_account.g.dart';
+part 'msg_replace_starname_account.g.dart';
 
 @reflector
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-class MsgRegisterStarnameAccount extends StdMsg {
-  MsgRegisterStarnameAccount({
-    @required this.broker,
+class MsgReplaceStarnameAccount extends StdMsg {
+  MsgReplaceStarnameAccount({
     @required this.domain,
     @required this.feePayer,
     @required this.name,
     @required this.owner,
-    @required this.registerer,
-    @required this.resources,
+    @required this.newResources,
   });
 
-  factory MsgRegisterStarnameAccount.fromJson(Map<String, dynamic> json) =>
-      _$MsgRegisterStarnameAccountFromJson(json);
-
-  final String broker;
-
-  final String domain;
-
-  @JsonKey(name: 'fee_payer')
-  final String feePayer;
-
-  final String name;
-
-  final String owner;
-
-  final String registerer;
-
-  final List<Resource> resources;
+  factory MsgReplaceStarnameAccount.fromJson(Map<String, dynamic> json) =>
+      _$MsgReplaceStarnameAccountFromJson(json);
 
   @override
-  Map<String, dynamic> asJson() => _$MsgRegisterStarnameAccountToJson(this);
+  Map<String, dynamic> asJson() => _$MsgReplaceStarnameAccountToJson(this);
+
+  final String domain;
+  final String feePayer;
+  final String name;
+  final String owner;
+  final List<Resource> newResources;
 
   @override
   List<Object> get props => [
-        broker,
         domain,
         feePayer,
         name,
         owner,
-        registerer,
-        resources,
+        newResources,
       ];
 
   @override

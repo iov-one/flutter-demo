@@ -8,7 +8,9 @@ abstract class AccountState implements _$AccountState {
 
   const factory AccountState.noAccount() = NoAccount;
 
-  const factory AccountState.processingAccount() = ProcessingAccount;
+  const factory AccountState.creatingAccount() = CreatingAccount;
+
+  const factory AccountState.updatingAccount() = UpdatingAccount;
 
   const factory AccountState.accountFailure() = AccountFailure;
 

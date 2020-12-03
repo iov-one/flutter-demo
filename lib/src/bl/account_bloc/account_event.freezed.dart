@@ -24,6 +24,13 @@ class _$AccountEventTearOff {
       account,
     );
   }
+
+// ignore: unused_element
+  Updated updated(Account account) {
+    return Updated(
+      account,
+    );
+  }
 }
 
 /// @nodoc
@@ -36,22 +43,26 @@ mixin _$AccountEvent {
   TResult when<TResult extends Object>({
     @required TResult initialized(),
     @required TResult created(Account account),
+    @required TResult updated(Account account),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
     TResult created(Account account),
+    TResult updated(Account account),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialized(Initialized value),
     @required TResult created(Created value),
+    @required TResult updated(Updated value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialized(Initialized value),
     TResult created(Created value),
+    TResult updated(Updated value),
     @required TResult orElse(),
   });
 }
@@ -112,9 +123,11 @@ class _$Initialized extends Initialized {
   TResult when<TResult extends Object>({
     @required TResult initialized(),
     @required TResult created(Account account),
+    @required TResult updated(Account account),
   }) {
     assert(initialized != null);
     assert(created != null);
+    assert(updated != null);
     return initialized();
   }
 
@@ -123,6 +136,7 @@ class _$Initialized extends Initialized {
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
     TResult created(Account account),
+    TResult updated(Account account),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -137,9 +151,11 @@ class _$Initialized extends Initialized {
   TResult map<TResult extends Object>({
     @required TResult initialized(Initialized value),
     @required TResult created(Created value),
+    @required TResult updated(Updated value),
   }) {
     assert(initialized != null);
     assert(created != null);
+    assert(updated != null);
     return initialized(this);
   }
 
@@ -148,6 +164,7 @@ class _$Initialized extends Initialized {
   TResult maybeMap<TResult extends Object>({
     TResult initialized(Initialized value),
     TResult created(Created value),
+    TResult updated(Updated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -236,9 +253,11 @@ class _$Created extends Created {
   TResult when<TResult extends Object>({
     @required TResult initialized(),
     @required TResult created(Account account),
+    @required TResult updated(Account account),
   }) {
     assert(initialized != null);
     assert(created != null);
+    assert(updated != null);
     return created(account);
   }
 
@@ -247,6 +266,7 @@ class _$Created extends Created {
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
     TResult created(Account account),
+    TResult updated(Account account),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -261,9 +281,11 @@ class _$Created extends Created {
   TResult map<TResult extends Object>({
     @required TResult initialized(Initialized value),
     @required TResult created(Created value),
+    @required TResult updated(Updated value),
   }) {
     assert(initialized != null);
     assert(created != null);
+    assert(updated != null);
     return created(this);
   }
 
@@ -272,6 +294,7 @@ class _$Created extends Created {
   TResult maybeMap<TResult extends Object>({
     TResult initialized(Initialized value),
     TResult created(Created value),
+    TResult updated(Updated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -288,4 +311,137 @@ abstract class Created extends AccountEvent {
 
   Account get account;
   $CreatedCopyWith<Created> get copyWith;
+}
+
+/// @nodoc
+abstract class $UpdatedCopyWith<$Res> {
+  factory $UpdatedCopyWith(Updated value, $Res Function(Updated) then) =
+      _$UpdatedCopyWithImpl<$Res>;
+  $Res call({Account account});
+
+  $AccountCopyWith<$Res> get account;
+}
+
+/// @nodoc
+class _$UpdatedCopyWithImpl<$Res> extends _$AccountEventCopyWithImpl<$Res>
+    implements $UpdatedCopyWith<$Res> {
+  _$UpdatedCopyWithImpl(Updated _value, $Res Function(Updated) _then)
+      : super(_value, (v) => _then(v as Updated));
+
+  @override
+  Updated get _value => super._value as Updated;
+
+  @override
+  $Res call({
+    Object account = freezed,
+  }) {
+    return _then(Updated(
+      account == freezed ? _value.account : account as Account,
+    ));
+  }
+
+  @override
+  $AccountCopyWith<$Res> get account {
+    if (_value.account == null) {
+      return null;
+    }
+    return $AccountCopyWith<$Res>(_value.account, (value) {
+      return _then(_value.copyWith(account: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$Updated extends Updated {
+  const _$Updated(this.account)
+      : assert(account != null),
+        super._();
+
+  @override
+  final Account account;
+
+  @override
+  String toString() {
+    return 'AccountEvent.updated(account: $account)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Updated &&
+            (identical(other.account, account) ||
+                const DeepCollectionEquality().equals(other.account, account)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(account);
+
+  @override
+  $UpdatedCopyWith<Updated> get copyWith =>
+      _$UpdatedCopyWithImpl<Updated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialized(),
+    @required TResult created(Account account),
+    @required TResult updated(Account account),
+  }) {
+    assert(initialized != null);
+    assert(created != null);
+    assert(updated != null);
+    return updated(account);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(),
+    TResult created(Account account),
+    TResult updated(Account account),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (updated != null) {
+      return updated(account);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialized(Initialized value),
+    @required TResult created(Created value),
+    @required TResult updated(Updated value),
+  }) {
+    assert(initialized != null);
+    assert(created != null);
+    assert(updated != null);
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(Initialized value),
+    TResult created(Created value),
+    TResult updated(Updated value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Updated extends AccountEvent {
+  const Updated._() : super._();
+  const factory Updated(Account account) = _$Updated;
+
+  Account get account;
+  $UpdatedCopyWith<Updated> get copyWith;
 }
