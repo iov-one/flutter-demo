@@ -843,10 +843,16 @@ class _$AccountTearOff {
   const _$AccountTearOff();
 
 // ignore: unused_element
-  _Account call({@required String name, @required String ethAddress}) {
+  _Account call(
+      {@required String name,
+      @required String ethAddress,
+      @required String metaName,
+      String image}) {
     return _Account(
       name: name,
       ethAddress: ethAddress,
+      metaName: metaName,
+      image: image,
     );
   }
 }
@@ -859,6 +865,8 @@ const $Account = _$AccountTearOff();
 mixin _$Account {
   String get name;
   String get ethAddress;
+  String get metaName;
+  String get image;
 
   $AccountCopyWith<Account> get copyWith;
 }
@@ -867,7 +875,7 @@ mixin _$Account {
 abstract class $AccountCopyWith<$Res> {
   factory $AccountCopyWith(Account value, $Res Function(Account) then) =
       _$AccountCopyWithImpl<$Res>;
-  $Res call({String name, String ethAddress});
+  $Res call({String name, String ethAddress, String metaName, String image});
 }
 
 /// @nodoc
@@ -882,11 +890,15 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
   $Res call({
     Object name = freezed,
     Object ethAddress = freezed,
+    Object metaName = freezed,
+    Object image = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed ? _value.name : name as String,
       ethAddress:
           ethAddress == freezed ? _value.ethAddress : ethAddress as String,
+      metaName: metaName == freezed ? _value.metaName : metaName as String,
+      image: image == freezed ? _value.image : image as String,
     ));
   }
 }
@@ -896,7 +908,7 @@ abstract class _$AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
   factory _$AccountCopyWith(_Account value, $Res Function(_Account) then) =
       __$AccountCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String ethAddress});
+  $Res call({String name, String ethAddress, String metaName, String image});
 }
 
 /// @nodoc
@@ -912,30 +924,43 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object ethAddress = freezed,
+    Object metaName = freezed,
+    Object image = freezed,
   }) {
     return _then(_Account(
       name: name == freezed ? _value.name : name as String,
       ethAddress:
           ethAddress == freezed ? _value.ethAddress : ethAddress as String,
+      metaName: metaName == freezed ? _value.metaName : metaName as String,
+      image: image == freezed ? _value.image : image as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_Account extends _Account {
-  const _$_Account({@required this.name, @required this.ethAddress})
+  const _$_Account(
+      {@required this.name,
+      @required this.ethAddress,
+      @required this.metaName,
+      this.image})
       : assert(name != null),
         assert(ethAddress != null),
+        assert(metaName != null),
         super._();
 
   @override
   final String name;
   @override
   final String ethAddress;
+  @override
+  final String metaName;
+  @override
+  final String image;
 
   @override
   String toString() {
-    return 'Account(name: $name, ethAddress: $ethAddress)';
+    return 'Account(name: $name, ethAddress: $ethAddress, metaName: $metaName, image: $image)';
   }
 
   @override
@@ -946,14 +971,21 @@ class _$_Account extends _Account {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.ethAddress, ethAddress) ||
                 const DeepCollectionEquality()
-                    .equals(other.ethAddress, ethAddress)));
+                    .equals(other.ethAddress, ethAddress)) &&
+            (identical(other.metaName, metaName) ||
+                const DeepCollectionEquality()
+                    .equals(other.metaName, metaName)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(ethAddress);
+      const DeepCollectionEquality().hash(ethAddress) ^
+      const DeepCollectionEquality().hash(metaName) ^
+      const DeepCollectionEquality().hash(image);
 
   @override
   _$AccountCopyWith<_Account> get copyWith =>
@@ -962,13 +994,20 @@ class _$_Account extends _Account {
 
 abstract class _Account extends Account {
   const _Account._() : super._();
-  const factory _Account({@required String name, @required String ethAddress}) =
-      _$_Account;
+  const factory _Account(
+      {@required String name,
+      @required String ethAddress,
+      @required String metaName,
+      String image}) = _$_Account;
 
   @override
   String get name;
   @override
   String get ethAddress;
+  @override
+  String get metaName;
+  @override
+  String get image;
   @override
   _$AccountCopyWith<_Account> get copyWith;
 }

@@ -1,5 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:starname_demo/main.dart';
+import 'package:starname_demo/src/api/pinata.dart';
 import 'package:starname_demo/src/api/rest_client.dart';
 import 'package:starname_demo/src/bl/account_bloc/account_bloc.dart';
 import 'package:starname_demo/src/bl/account_bloc/account_event.dart';
@@ -47,8 +50,12 @@ class MainScreen extends StatelessWidget {
                       ),
                     ),
                     BlocProvider(
-                      create: (context) => AccountBloc(wallet, RestClient())
-                        ..add(const AccountEvent.initialized()),
+                      create: (context) => AccountBloc(
+                        wallet,
+                        RestClient(),
+                        Dio(),
+                        PinataApi(Dio(), pinataApiKey, pinataApiSecretKey),
+                      )..add(const AccountEvent.initialized()),
                       child: const AccountForm(),
                     ),
                   ],

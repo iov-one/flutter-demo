@@ -22,12 +22,15 @@ environment:
 
 dependencies:
   alan: ^0.39.2
+  dfunc: ^0.5.2
   dio: ^3.0.10
   json_annotation: ^3.1.1
   freezed_annotation: ^0.12.0
   flutter_bloc: ^6.1.1
   flutter_secure_storage: ^3.3.5
+  image_picker: ^0.6.7+14
   meta: ^1.2.4
+  path_provider: ^1.6.24
   provider: ^4.3.2+2
   retrofit: ^1.3.4+1
   flutter:

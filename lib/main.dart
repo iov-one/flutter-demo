@@ -6,6 +6,9 @@ import 'package:starname_demo/src/presentation/app.dart';
 
 import 'main.reflectable.dart';
 
+const pinataApiKey = '';
+const pinataApiSecretKey = '';
+
 void main() {
   Codec.registerMsgType('starname/RegisterAccount', MsgRegisterStarnameAccount);
   Codec.registerMsgType(

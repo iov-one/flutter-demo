@@ -19,16 +19,28 @@ class _$AccountEventTearOff {
   }
 
 // ignore: unused_element
-  Created created(Account account) {
+  Created created(
+      {@required String name,
+      @required String ethAddress,
+      @required String metaName,
+      @required File image}) {
     return Created(
-      account,
+      name: name,
+      ethAddress: ethAddress,
+      metaName: metaName,
+      image: image,
     );
   }
 
 // ignore: unused_element
-  Updated updated(Account account) {
+  Updated updated(
+      {@required String ethAddress,
+      @required String metaName,
+      @required File image}) {
     return Updated(
-      account,
+      ethAddress: ethAddress,
+      metaName: metaName,
+      image: image,
     );
   }
 }
@@ -42,14 +54,17 @@ mixin _$AccountEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(),
-    @required TResult created(Account account),
-    @required TResult updated(Account account),
+    @required
+        TResult created(
+            String name, String ethAddress, String metaName, File image),
+    @required TResult updated(String ethAddress, String metaName, File image),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
-    TResult created(Account account),
-    TResult updated(Account account),
+    TResult created(
+        String name, String ethAddress, String metaName, File image),
+    TResult updated(String ethAddress, String metaName, File image),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -122,8 +137,10 @@ class _$Initialized extends Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(),
-    @required TResult created(Account account),
-    @required TResult updated(Account account),
+    @required
+        TResult created(
+            String name, String ethAddress, String metaName, File image),
+    @required TResult updated(String ethAddress, String metaName, File image),
   }) {
     assert(initialized != null);
     assert(created != null);
@@ -135,8 +152,9 @@ class _$Initialized extends Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
-    TResult created(Account account),
-    TResult updated(Account account),
+    TResult created(
+        String name, String ethAddress, String metaName, File image),
+    TResult updated(String ethAddress, String metaName, File image),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -184,9 +202,7 @@ abstract class Initialized extends AccountEvent {
 abstract class $CreatedCopyWith<$Res> {
   factory $CreatedCopyWith(Created value, $Res Function(Created) then) =
       _$CreatedCopyWithImpl<$Res>;
-  $Res call({Account account});
-
-  $AccountCopyWith<$Res> get account;
+  $Res call({String name, String ethAddress, String metaName, File image});
 }
 
 /// @nodoc
@@ -200,49 +216,71 @@ class _$CreatedCopyWithImpl<$Res> extends _$AccountEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object account = freezed,
+    Object name = freezed,
+    Object ethAddress = freezed,
+    Object metaName = freezed,
+    Object image = freezed,
   }) {
     return _then(Created(
-      account == freezed ? _value.account : account as Account,
+      name: name == freezed ? _value.name : name as String,
+      ethAddress:
+          ethAddress == freezed ? _value.ethAddress : ethAddress as String,
+      metaName: metaName == freezed ? _value.metaName : metaName as String,
+      image: image == freezed ? _value.image : image as File,
     ));
-  }
-
-  @override
-  $AccountCopyWith<$Res> get account {
-    if (_value.account == null) {
-      return null;
-    }
-    return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value));
-    });
   }
 }
 
 /// @nodoc
 class _$Created extends Created {
-  const _$Created(this.account)
-      : assert(account != null),
+  const _$Created(
+      {@required this.name,
+      @required this.ethAddress,
+      @required this.metaName,
+      @required this.image})
+      : assert(name != null),
+        assert(ethAddress != null),
+        assert(metaName != null),
+        assert(image != null),
         super._();
 
   @override
-  final Account account;
+  final String name;
+  @override
+  final String ethAddress;
+  @override
+  final String metaName;
+  @override
+  final File image;
 
   @override
   String toString() {
-    return 'AccountEvent.created(account: $account)';
+    return 'AccountEvent.created(name: $name, ethAddress: $ethAddress, metaName: $metaName, image: $image)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Created &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality().equals(other.account, account)));
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.ethAddress, ethAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.ethAddress, ethAddress)) &&
+            (identical(other.metaName, metaName) ||
+                const DeepCollectionEquality()
+                    .equals(other.metaName, metaName)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(account);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(ethAddress) ^
+      const DeepCollectionEquality().hash(metaName) ^
+      const DeepCollectionEquality().hash(image);
 
   @override
   $CreatedCopyWith<Created> get copyWith =>
@@ -252,26 +290,29 @@ class _$Created extends Created {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(),
-    @required TResult created(Account account),
-    @required TResult updated(Account account),
+    @required
+        TResult created(
+            String name, String ethAddress, String metaName, File image),
+    @required TResult updated(String ethAddress, String metaName, File image),
   }) {
     assert(initialized != null);
     assert(created != null);
     assert(updated != null);
-    return created(account);
+    return created(name, ethAddress, metaName, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
-    TResult created(Account account),
-    TResult updated(Account account),
+    TResult created(
+        String name, String ethAddress, String metaName, File image),
+    TResult updated(String ethAddress, String metaName, File image),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (created != null) {
-      return created(account);
+      return created(name, ethAddress, metaName, image);
     }
     return orElse();
   }
@@ -307,9 +348,16 @@ class _$Created extends Created {
 
 abstract class Created extends AccountEvent {
   const Created._() : super._();
-  const factory Created(Account account) = _$Created;
+  const factory Created(
+      {@required String name,
+      @required String ethAddress,
+      @required String metaName,
+      @required File image}) = _$Created;
 
-  Account get account;
+  String get name;
+  String get ethAddress;
+  String get metaName;
+  File get image;
   $CreatedCopyWith<Created> get copyWith;
 }
 
@@ -317,9 +365,7 @@ abstract class Created extends AccountEvent {
 abstract class $UpdatedCopyWith<$Res> {
   factory $UpdatedCopyWith(Updated value, $Res Function(Updated) then) =
       _$UpdatedCopyWithImpl<$Res>;
-  $Res call({Account account});
-
-  $AccountCopyWith<$Res> get account;
+  $Res call({String ethAddress, String metaName, File image});
 }
 
 /// @nodoc
@@ -333,49 +379,62 @@ class _$UpdatedCopyWithImpl<$Res> extends _$AccountEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object account = freezed,
+    Object ethAddress = freezed,
+    Object metaName = freezed,
+    Object image = freezed,
   }) {
     return _then(Updated(
-      account == freezed ? _value.account : account as Account,
+      ethAddress:
+          ethAddress == freezed ? _value.ethAddress : ethAddress as String,
+      metaName: metaName == freezed ? _value.metaName : metaName as String,
+      image: image == freezed ? _value.image : image as File,
     ));
-  }
-
-  @override
-  $AccountCopyWith<$Res> get account {
-    if (_value.account == null) {
-      return null;
-    }
-    return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value));
-    });
   }
 }
 
 /// @nodoc
 class _$Updated extends Updated {
-  const _$Updated(this.account)
-      : assert(account != null),
+  const _$Updated(
+      {@required this.ethAddress,
+      @required this.metaName,
+      @required this.image})
+      : assert(ethAddress != null),
+        assert(metaName != null),
+        assert(image != null),
         super._();
 
   @override
-  final Account account;
+  final String ethAddress;
+  @override
+  final String metaName;
+  @override
+  final File image;
 
   @override
   String toString() {
-    return 'AccountEvent.updated(account: $account)';
+    return 'AccountEvent.updated(ethAddress: $ethAddress, metaName: $metaName, image: $image)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Updated &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality().equals(other.account, account)));
+            (identical(other.ethAddress, ethAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.ethAddress, ethAddress)) &&
+            (identical(other.metaName, metaName) ||
+                const DeepCollectionEquality()
+                    .equals(other.metaName, metaName)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(account);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(ethAddress) ^
+      const DeepCollectionEquality().hash(metaName) ^
+      const DeepCollectionEquality().hash(image);
 
   @override
   $UpdatedCopyWith<Updated> get copyWith =>
@@ -385,26 +444,29 @@ class _$Updated extends Updated {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(),
-    @required TResult created(Account account),
-    @required TResult updated(Account account),
+    @required
+        TResult created(
+            String name, String ethAddress, String metaName, File image),
+    @required TResult updated(String ethAddress, String metaName, File image),
   }) {
     assert(initialized != null);
     assert(created != null);
     assert(updated != null);
-    return updated(account);
+    return updated(ethAddress, metaName, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
-    TResult created(Account account),
-    TResult updated(Account account),
+    TResult created(
+        String name, String ethAddress, String metaName, File image),
+    TResult updated(String ethAddress, String metaName, File image),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updated != null) {
-      return updated(account);
+      return updated(ethAddress, metaName, image);
     }
     return orElse();
   }
@@ -440,8 +502,13 @@ class _$Updated extends Updated {
 
 abstract class Updated extends AccountEvent {
   const Updated._() : super._();
-  const factory Updated(Account account) = _$Updated;
+  const factory Updated(
+      {@required String ethAddress,
+      @required String metaName,
+      @required File image}) = _$Updated;
 
-  Account get account;
+  String get ethAddress;
+  String get metaName;
+  File get image;
   $UpdatedCopyWith<Updated> get copyWith;
 }

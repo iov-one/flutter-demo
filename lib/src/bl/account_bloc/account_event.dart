@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starname_demo/src/bl/account_bloc/account_state.dart';
 
 part 'account_event.freezed.dart';
 
@@ -9,7 +10,16 @@ abstract class AccountEvent implements _$AccountEvent {
 
   const factory AccountEvent.initialized() = Initialized;
 
-  const factory AccountEvent.created(Account account) = Created;
+  const factory AccountEvent.created({
+    @required String name,
+    @required String ethAddress,
+    @required String metaName,
+    @required File image,
+  }) = Created;
 
-  const factory AccountEvent.updated(Account account) = Updated;
+  const factory AccountEvent.updated({
+    @required String ethAddress,
+    @required String metaName,
+    @required File image,
+  }) = Updated;
 }

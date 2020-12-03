@@ -35,6 +35,7 @@ extension WalletExt on Wallet {
   Future<TxResponse> registerStarnameAccount({
     @required String resource,
     @required String name,
+    @required String metadataUrl,
   }) async {
     final message = MsgRegisterStarnameAccount(
       broker: '',
@@ -48,6 +49,10 @@ extension WalletExt on Wallet {
           resource: resource,
           uri: 'asset:eth',
         ),
+        Resource(
+          resource: metadataUrl,
+          uri: 'metadata:url',
+        ),
       ],
     );
     return _sendMessage(message);
@@ -56,6 +61,7 @@ extension WalletExt on Wallet {
   Future<TxResponse> updateStarnameAccount({
     @required String resource,
     @required String name,
+    @required String metadataUrl,
   }) async {
     final message = MsgReplaceStarnameAccount(
       domain: 'iov',
@@ -66,6 +72,10 @@ extension WalletExt on Wallet {
         Resource(
           resource: resource,
           uri: 'asset:eth',
+        ),
+        Resource(
+          resource: metadataUrl,
+          uri: 'metadata:url',
         ),
       ],
     );
