@@ -33,7 +33,8 @@ extension WalletExt on Wallet {
   }
 
   Future<TxResponse> registerStarnameAccount({
-    @required String resource,
+    @required String ethAddress,
+    @required String btcAddress,
     @required String name,
     @required String metadataUrl,
   }) async {
@@ -45,10 +46,16 @@ extension WalletExt on Wallet {
       owner: bech32Address,
       registerer: bech32Address,
       resources: [
-        Resource(
-          resource: resource,
-          uri: 'asset:eth',
-        ),
+        if (ethAddress.isNotEmpty)
+          Resource(
+            resource: ethAddress,
+            uri: 'asset:eth',
+          ),
+        if (btcAddress.isNotEmpty)
+          Resource(
+            resource: btcAddress,
+            uri: 'asset:btc',
+          ),
         Resource(
           resource: metadataUrl,
           uri: 'metadata:url',
@@ -59,7 +66,8 @@ extension WalletExt on Wallet {
   }
 
   Future<TxResponse> updateStarnameAccount({
-    @required String resource,
+    @required String ethAddress,
+    @required String btcAddress,
     @required String name,
     @required String metadataUrl,
   }) async {
@@ -69,10 +77,16 @@ extension WalletExt on Wallet {
       name: name,
       owner: bech32Address,
       newResources: [
-        Resource(
-          resource: resource,
-          uri: 'asset:eth',
-        ),
+        if (ethAddress.isNotEmpty)
+          Resource(
+            resource: ethAddress,
+            uri: 'asset:eth',
+          ),
+        if (btcAddress.isNotEmpty)
+          Resource(
+            resource: btcAddress,
+            uri: 'asset:btc',
+          ),
         Resource(
           resource: metadataUrl,
           uri: 'metadata:url',

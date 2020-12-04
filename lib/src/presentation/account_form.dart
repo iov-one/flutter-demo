@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:starname_demo/src/bl/account_bloc/account_bloc.dart';
 import 'package:starname_demo/src/bl/account_bloc/account_event.dart';
 import 'package:starname_demo/src/bl/account_bloc/account_state.dart';
+import 'package:starname_demo/src/presentation/button_progress_indicator.dart';
 import 'package:starname_demo/src/presentation/utils.dart';
 
 class AccountForm extends StatefulWidget {
@@ -18,8 +19,9 @@ class AccountForm extends StatefulWidget {
 
 class AccountFormState extends State<AccountForm> {
   final _formKey = GlobalKey<FormState>();
-  final _name = TextEditingController();
-  final _address = TextEditingController();
+  final _starname = TextEditingController();
+  final _ethAddress = TextEditingController();
+  final _btcAddress = TextEditingController();
   final _metaName = TextEditingController();
   final _imageKey = GlobalKey<FormFieldState<File>>();
 
@@ -29,8 +31,9 @@ class AccountFormState extends State<AccountForm> {
     if (!_formKey.currentState.validate()) return;
 
     context.read<AccountBloc>().add(AccountEvent.created(
-          name: _name.text,
-          ethAddress: _address.text,
+          name: _starname.text,
+          ethAddress: _ethAddress.text,
+          btcAddress: _btcAddress.text,
           metaName: _metaName.text,
           image: _imageKey.currentState.value,
         ));
@@ -40,7 +43,8 @@ class AccountFormState extends State<AccountForm> {
     if (!_formKey.currentState.validate()) return;
 
     context.read<AccountBloc>().add(AccountEvent.updated(
-          ethAddress: _address.text,
+          ethAddress: _ethAddress.text,
+          btcAddress: _btcAddress.text,
           metaName: _metaName.text,
           image: _imageKey.currentState.value,
         ));
@@ -53,11 +57,12 @@ class AccountFormState extends State<AccountForm> {
         accountSuccess: () => Scaffold.of(context)
             .showSnackBar(const SnackBar(content: Text('Operation succeeded'))),
         accountReady: (a) async {
+          _starname.text = a.name;
+          _ethAddress.text = a.ethAddress;
+          _btcAddress.text = a.btcAddress;
+          _metaName.text = a.metaName;
           final imageFile = await a.image?.let(urlToFile);
           setState(() {
-            _name.text = a.name;
-            _address.text = a.ethAddress;
-            _metaName.text = a.metaName;
             _imageKey.currentState.didChange(imageFile);
           });
         },
@@ -135,23 +140,8 @@ class AccountFormState extends State<AccountForm> {
                     hintText: 'ex: antoine',
                     suffix: Text('*iov'),
                   ),
-                  controller: _name,
+                  controller: _starname,
                   readOnly: state is! NoAccount,
-                  validator: _requiredValidator,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  controller: _address,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    labelText: 'Ethereum address',
-                    hintText: 'ex: 0x11AE8..',
-                  ),
-                  readOnly: state is! NoAccount && state is! AccountReady,
                   validator: _requiredValidator,
                 ),
               ),
@@ -170,19 +160,59 @@ class AccountFormState extends State<AccountForm> {
                 ),
               ),
               Padding(
+                padding: const EdgeInsets.all(16),
+                child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: _ethAddress,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    labelText: 'Ethereum address',
+                    hintText: 'ex: 0x11AE8...',
+                  ),
+                  readOnly: state is! NoAccount && state is! AccountReady,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: _btcAddress,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    labelText: 'Bitcoin address',
+                    hintText: 'ex: 1BvBM...',
+                  ),
+                  readOnly: state is! NoAccount && state is! AccountReady,
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: state.when(
                   noAccount: () => ElevatedButton(
                     onPressed: _createAccount,
                     child: const Text('Register'),
                   ),
-                  creatingAccount: () => const ElevatedButton(
+                  creatingAccount: () => ElevatedButton(
                     onPressed: null,
-                    child: Text('Register'),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        ButtonProgressIndicator(),
+                        Text('Register'),
+                      ],
+                    ),
                   ),
-                  updatingAccount: () => const ElevatedButton(
+                  updatingAccount: () => ElevatedButton(
                     onPressed: null,
-                    child: Text('Update'),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        ButtonProgressIndicator(),
+                        Text('Update'),
+                      ],
+                    ),
                   ),
                   accountFailure: () => Container(),
                   accountSuccess: () => Container(),

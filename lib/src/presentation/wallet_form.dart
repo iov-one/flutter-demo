@@ -5,6 +5,7 @@ import 'package:starname_demo/src/bl/wallet_bloc/wallet_bloc.dart';
 import 'package:starname_demo/src/bl/wallet_bloc/wallet_event.dart';
 import 'package:starname_demo/src/bl/wallet_bloc/wallet_state.dart';
 import 'package:starname_demo/src/presentation/app.dart';
+import 'package:starname_demo/src/presentation/button_progress_indicator.dart';
 
 class WalletForm extends StatelessWidget {
   const WalletForm({Key key}) : super(key: key);
@@ -27,7 +28,13 @@ class WalletForm extends StatelessWidget {
                     : () => context
                         .read<WalletBloc>()
                         .add(const WalletEvent.created()),
-                child: const Text('Create Wallet'),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (state is Creating) const ButtonProgressIndicator(),
+                    const Text('Create Wallet'),
+                  ],
+                ),
               ),
             ),
           ),

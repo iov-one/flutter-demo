@@ -846,11 +846,13 @@ class _$AccountTearOff {
   _Account call(
       {@required String name,
       @required String ethAddress,
+      @required String btcAddress,
       @required String metaName,
       String image}) {
     return _Account(
       name: name,
       ethAddress: ethAddress,
+      btcAddress: btcAddress,
       metaName: metaName,
       image: image,
     );
@@ -865,6 +867,7 @@ const $Account = _$AccountTearOff();
 mixin _$Account {
   String get name;
   String get ethAddress;
+  String get btcAddress;
   String get metaName;
   String get image;
 
@@ -875,7 +878,12 @@ mixin _$Account {
 abstract class $AccountCopyWith<$Res> {
   factory $AccountCopyWith(Account value, $Res Function(Account) then) =
       _$AccountCopyWithImpl<$Res>;
-  $Res call({String name, String ethAddress, String metaName, String image});
+  $Res call(
+      {String name,
+      String ethAddress,
+      String btcAddress,
+      String metaName,
+      String image});
 }
 
 /// @nodoc
@@ -890,6 +898,7 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
   $Res call({
     Object name = freezed,
     Object ethAddress = freezed,
+    Object btcAddress = freezed,
     Object metaName = freezed,
     Object image = freezed,
   }) {
@@ -897,6 +906,8 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
       name: name == freezed ? _value.name : name as String,
       ethAddress:
           ethAddress == freezed ? _value.ethAddress : ethAddress as String,
+      btcAddress:
+          btcAddress == freezed ? _value.btcAddress : btcAddress as String,
       metaName: metaName == freezed ? _value.metaName : metaName as String,
       image: image == freezed ? _value.image : image as String,
     ));
@@ -908,7 +919,12 @@ abstract class _$AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
   factory _$AccountCopyWith(_Account value, $Res Function(_Account) then) =
       __$AccountCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String ethAddress, String metaName, String image});
+  $Res call(
+      {String name,
+      String ethAddress,
+      String btcAddress,
+      String metaName,
+      String image});
 }
 
 /// @nodoc
@@ -924,6 +940,7 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object ethAddress = freezed,
+    Object btcAddress = freezed,
     Object metaName = freezed,
     Object image = freezed,
   }) {
@@ -931,6 +948,8 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as String,
       ethAddress:
           ethAddress == freezed ? _value.ethAddress : ethAddress as String,
+      btcAddress:
+          btcAddress == freezed ? _value.btcAddress : btcAddress as String,
       metaName: metaName == freezed ? _value.metaName : metaName as String,
       image: image == freezed ? _value.image : image as String,
     ));
@@ -942,10 +961,12 @@ class _$_Account extends _Account {
   const _$_Account(
       {@required this.name,
       @required this.ethAddress,
+      @required this.btcAddress,
       @required this.metaName,
       this.image})
       : assert(name != null),
         assert(ethAddress != null),
+        assert(btcAddress != null),
         assert(metaName != null),
         super._();
 
@@ -954,13 +975,15 @@ class _$_Account extends _Account {
   @override
   final String ethAddress;
   @override
+  final String btcAddress;
+  @override
   final String metaName;
   @override
   final String image;
 
   @override
   String toString() {
-    return 'Account(name: $name, ethAddress: $ethAddress, metaName: $metaName, image: $image)';
+    return 'Account(name: $name, ethAddress: $ethAddress, btcAddress: $btcAddress, metaName: $metaName, image: $image)';
   }
 
   @override
@@ -972,6 +995,9 @@ class _$_Account extends _Account {
             (identical(other.ethAddress, ethAddress) ||
                 const DeepCollectionEquality()
                     .equals(other.ethAddress, ethAddress)) &&
+            (identical(other.btcAddress, btcAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.btcAddress, btcAddress)) &&
             (identical(other.metaName, metaName) ||
                 const DeepCollectionEquality()
                     .equals(other.metaName, metaName)) &&
@@ -984,6 +1010,7 @@ class _$_Account extends _Account {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(ethAddress) ^
+      const DeepCollectionEquality().hash(btcAddress) ^
       const DeepCollectionEquality().hash(metaName) ^
       const DeepCollectionEquality().hash(image);
 
@@ -997,6 +1024,7 @@ abstract class _Account extends Account {
   const factory _Account(
       {@required String name,
       @required String ethAddress,
+      @required String btcAddress,
       @required String metaName,
       String image}) = _$_Account;
 
@@ -1004,6 +1032,8 @@ abstract class _Account extends Account {
   String get name;
   @override
   String get ethAddress;
+  @override
+  String get btcAddress;
   @override
   String get metaName;
   @override

@@ -13,12 +13,14 @@ abstract class AccountEvent implements _$AccountEvent {
   const factory AccountEvent.created({
     @required String name,
     @required String ethAddress,
+    @required String btcAddress,
     @required String metaName,
     @required File image,
   }) = Created;
 
   const factory AccountEvent.updated({
     @required String ethAddress,
+    @required String btcAddress,
     @required String metaName,
     @required File image,
   }) = Updated;

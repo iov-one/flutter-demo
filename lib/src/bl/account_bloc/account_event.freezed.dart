@@ -22,11 +22,13 @@ class _$AccountEventTearOff {
   Created created(
       {@required String name,
       @required String ethAddress,
+      @required String btcAddress,
       @required String metaName,
       @required File image}) {
     return Created(
       name: name,
       ethAddress: ethAddress,
+      btcAddress: btcAddress,
       metaName: metaName,
       image: image,
     );
@@ -35,10 +37,12 @@ class _$AccountEventTearOff {
 // ignore: unused_element
   Updated updated(
       {@required String ethAddress,
+      @required String btcAddress,
       @required String metaName,
       @required File image}) {
     return Updated(
       ethAddress: ethAddress,
+      btcAddress: btcAddress,
       metaName: metaName,
       image: image,
     );
@@ -55,16 +59,19 @@ mixin _$AccountEvent {
   TResult when<TResult extends Object>({
     @required TResult initialized(),
     @required
-        TResult created(
-            String name, String ethAddress, String metaName, File image),
-    @required TResult updated(String ethAddress, String metaName, File image),
+        TResult created(String name, String ethAddress, String btcAddress,
+            String metaName, File image),
+    @required
+        TResult updated(
+            String ethAddress, String btcAddress, String metaName, File image),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
-    TResult created(
-        String name, String ethAddress, String metaName, File image),
-    TResult updated(String ethAddress, String metaName, File image),
+    TResult created(String name, String ethAddress, String btcAddress,
+        String metaName, File image),
+    TResult updated(
+        String ethAddress, String btcAddress, String metaName, File image),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -138,9 +145,11 @@ class _$Initialized extends Initialized {
   TResult when<TResult extends Object>({
     @required TResult initialized(),
     @required
-        TResult created(
-            String name, String ethAddress, String metaName, File image),
-    @required TResult updated(String ethAddress, String metaName, File image),
+        TResult created(String name, String ethAddress, String btcAddress,
+            String metaName, File image),
+    @required
+        TResult updated(
+            String ethAddress, String btcAddress, String metaName, File image),
   }) {
     assert(initialized != null);
     assert(created != null);
@@ -152,9 +161,10 @@ class _$Initialized extends Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
-    TResult created(
-        String name, String ethAddress, String metaName, File image),
-    TResult updated(String ethAddress, String metaName, File image),
+    TResult created(String name, String ethAddress, String btcAddress,
+        String metaName, File image),
+    TResult updated(
+        String ethAddress, String btcAddress, String metaName, File image),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -202,7 +212,12 @@ abstract class Initialized extends AccountEvent {
 abstract class $CreatedCopyWith<$Res> {
   factory $CreatedCopyWith(Created value, $Res Function(Created) then) =
       _$CreatedCopyWithImpl<$Res>;
-  $Res call({String name, String ethAddress, String metaName, File image});
+  $Res call(
+      {String name,
+      String ethAddress,
+      String btcAddress,
+      String metaName,
+      File image});
 }
 
 /// @nodoc
@@ -218,6 +233,7 @@ class _$CreatedCopyWithImpl<$Res> extends _$AccountEventCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object ethAddress = freezed,
+    Object btcAddress = freezed,
     Object metaName = freezed,
     Object image = freezed,
   }) {
@@ -225,6 +241,8 @@ class _$CreatedCopyWithImpl<$Res> extends _$AccountEventCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as String,
       ethAddress:
           ethAddress == freezed ? _value.ethAddress : ethAddress as String,
+      btcAddress:
+          btcAddress == freezed ? _value.btcAddress : btcAddress as String,
       metaName: metaName == freezed ? _value.metaName : metaName as String,
       image: image == freezed ? _value.image : image as File,
     ));
@@ -236,10 +254,12 @@ class _$Created extends Created {
   const _$Created(
       {@required this.name,
       @required this.ethAddress,
+      @required this.btcAddress,
       @required this.metaName,
       @required this.image})
       : assert(name != null),
         assert(ethAddress != null),
+        assert(btcAddress != null),
         assert(metaName != null),
         assert(image != null),
         super._();
@@ -249,13 +269,15 @@ class _$Created extends Created {
   @override
   final String ethAddress;
   @override
+  final String btcAddress;
+  @override
   final String metaName;
   @override
   final File image;
 
   @override
   String toString() {
-    return 'AccountEvent.created(name: $name, ethAddress: $ethAddress, metaName: $metaName, image: $image)';
+    return 'AccountEvent.created(name: $name, ethAddress: $ethAddress, btcAddress: $btcAddress, metaName: $metaName, image: $image)';
   }
 
   @override
@@ -267,6 +289,9 @@ class _$Created extends Created {
             (identical(other.ethAddress, ethAddress) ||
                 const DeepCollectionEquality()
                     .equals(other.ethAddress, ethAddress)) &&
+            (identical(other.btcAddress, btcAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.btcAddress, btcAddress)) &&
             (identical(other.metaName, metaName) ||
                 const DeepCollectionEquality()
                     .equals(other.metaName, metaName)) &&
@@ -279,6 +304,7 @@ class _$Created extends Created {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(ethAddress) ^
+      const DeepCollectionEquality().hash(btcAddress) ^
       const DeepCollectionEquality().hash(metaName) ^
       const DeepCollectionEquality().hash(image);
 
@@ -291,28 +317,31 @@ class _$Created extends Created {
   TResult when<TResult extends Object>({
     @required TResult initialized(),
     @required
-        TResult created(
-            String name, String ethAddress, String metaName, File image),
-    @required TResult updated(String ethAddress, String metaName, File image),
+        TResult created(String name, String ethAddress, String btcAddress,
+            String metaName, File image),
+    @required
+        TResult updated(
+            String ethAddress, String btcAddress, String metaName, File image),
   }) {
     assert(initialized != null);
     assert(created != null);
     assert(updated != null);
-    return created(name, ethAddress, metaName, image);
+    return created(name, ethAddress, btcAddress, metaName, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
-    TResult created(
-        String name, String ethAddress, String metaName, File image),
-    TResult updated(String ethAddress, String metaName, File image),
+    TResult created(String name, String ethAddress, String btcAddress,
+        String metaName, File image),
+    TResult updated(
+        String ethAddress, String btcAddress, String metaName, File image),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (created != null) {
-      return created(name, ethAddress, metaName, image);
+      return created(name, ethAddress, btcAddress, metaName, image);
     }
     return orElse();
   }
@@ -351,11 +380,13 @@ abstract class Created extends AccountEvent {
   const factory Created(
       {@required String name,
       @required String ethAddress,
+      @required String btcAddress,
       @required String metaName,
       @required File image}) = _$Created;
 
   String get name;
   String get ethAddress;
+  String get btcAddress;
   String get metaName;
   File get image;
   $CreatedCopyWith<Created> get copyWith;
@@ -365,7 +396,8 @@ abstract class Created extends AccountEvent {
 abstract class $UpdatedCopyWith<$Res> {
   factory $UpdatedCopyWith(Updated value, $Res Function(Updated) then) =
       _$UpdatedCopyWithImpl<$Res>;
-  $Res call({String ethAddress, String metaName, File image});
+  $Res call(
+      {String ethAddress, String btcAddress, String metaName, File image});
 }
 
 /// @nodoc
@@ -380,12 +412,15 @@ class _$UpdatedCopyWithImpl<$Res> extends _$AccountEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object ethAddress = freezed,
+    Object btcAddress = freezed,
     Object metaName = freezed,
     Object image = freezed,
   }) {
     return _then(Updated(
       ethAddress:
           ethAddress == freezed ? _value.ethAddress : ethAddress as String,
+      btcAddress:
+          btcAddress == freezed ? _value.btcAddress : btcAddress as String,
       metaName: metaName == freezed ? _value.metaName : metaName as String,
       image: image == freezed ? _value.image : image as File,
     ));
@@ -396,9 +431,11 @@ class _$UpdatedCopyWithImpl<$Res> extends _$AccountEventCopyWithImpl<$Res>
 class _$Updated extends Updated {
   const _$Updated(
       {@required this.ethAddress,
+      @required this.btcAddress,
       @required this.metaName,
       @required this.image})
       : assert(ethAddress != null),
+        assert(btcAddress != null),
         assert(metaName != null),
         assert(image != null),
         super._();
@@ -406,13 +443,15 @@ class _$Updated extends Updated {
   @override
   final String ethAddress;
   @override
+  final String btcAddress;
+  @override
   final String metaName;
   @override
   final File image;
 
   @override
   String toString() {
-    return 'AccountEvent.updated(ethAddress: $ethAddress, metaName: $metaName, image: $image)';
+    return 'AccountEvent.updated(ethAddress: $ethAddress, btcAddress: $btcAddress, metaName: $metaName, image: $image)';
   }
 
   @override
@@ -422,6 +461,9 @@ class _$Updated extends Updated {
             (identical(other.ethAddress, ethAddress) ||
                 const DeepCollectionEquality()
                     .equals(other.ethAddress, ethAddress)) &&
+            (identical(other.btcAddress, btcAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.btcAddress, btcAddress)) &&
             (identical(other.metaName, metaName) ||
                 const DeepCollectionEquality()
                     .equals(other.metaName, metaName)) &&
@@ -433,6 +475,7 @@ class _$Updated extends Updated {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(ethAddress) ^
+      const DeepCollectionEquality().hash(btcAddress) ^
       const DeepCollectionEquality().hash(metaName) ^
       const DeepCollectionEquality().hash(image);
 
@@ -445,28 +488,31 @@ class _$Updated extends Updated {
   TResult when<TResult extends Object>({
     @required TResult initialized(),
     @required
-        TResult created(
-            String name, String ethAddress, String metaName, File image),
-    @required TResult updated(String ethAddress, String metaName, File image),
+        TResult created(String name, String ethAddress, String btcAddress,
+            String metaName, File image),
+    @required
+        TResult updated(
+            String ethAddress, String btcAddress, String metaName, File image),
   }) {
     assert(initialized != null);
     assert(created != null);
     assert(updated != null);
-    return updated(ethAddress, metaName, image);
+    return updated(ethAddress, btcAddress, metaName, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(),
-    TResult created(
-        String name, String ethAddress, String metaName, File image),
-    TResult updated(String ethAddress, String metaName, File image),
+    TResult created(String name, String ethAddress, String btcAddress,
+        String metaName, File image),
+    TResult updated(
+        String ethAddress, String btcAddress, String metaName, File image),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updated != null) {
-      return updated(ethAddress, metaName, image);
+      return updated(ethAddress, btcAddress, metaName, image);
     }
     return orElse();
   }
@@ -504,10 +550,12 @@ abstract class Updated extends AccountEvent {
   const Updated._() : super._();
   const factory Updated(
       {@required String ethAddress,
+      @required String btcAddress,
       @required String metaName,
       @required File image}) = _$Updated;
 
   String get ethAddress;
+  String get btcAddress;
   String get metaName;
   File get image;
   $UpdatedCopyWith<Updated> get copyWith;

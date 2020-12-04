@@ -24,6 +24,7 @@ abstract class Account implements _$Account {
   const factory Account({
     @required String name,
     @required String ethAddress,
+    @required String btcAddress,
     @required String metaName,
     String image,
   }) = _Account;

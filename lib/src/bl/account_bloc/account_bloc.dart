@@ -48,6 +48,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
                 .firstWhere((e) => e.uri == 'asset:eth', orElse: () => null)
                 ?.resource ??
             '',
+        btcAddress: accountDto.resources
+                .firstWhere((e) => e.uri == 'asset:btc', orElse: () => null)
+                ?.resource ??
+            '',
         metaName: metadata?.name ?? '',
         image: metadata?.photo,
       );
@@ -68,7 +72,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       final metadataUrl = await _pinataApi.pinFile(event.image, event.metaName);
       final metaData = await _loadMetadata(metadataUrl);
       final result = await _wallet.registerStarnameAccount(
-        resource: event.ethAddress,
+        ethAddress: event.ethAddress,
+        btcAddress: event.btcAddress,
         name: event.name,
         metadataUrl: metadataUrl,
       );
@@ -77,6 +82,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         yield AccountState.accountReady(Account(
           name: event.name,
           ethAddress: event.ethAddress,
+          btcAddress: event.btcAddress,
           metaName: metaData.name,
           image: metaData.photo,
         ));
@@ -103,7 +109,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       final metadataUrl = await _pinataApi.pinFile(event.image, event.metaName);
       final metaData = await _loadMetadata(metadataUrl);
       final result = await _wallet.updateStarnameAccount(
-        resource: event.ethAddress,
+        ethAddress: event.ethAddress,
+        btcAddress: event.btcAddress,
         name: currentAccount.name,
         metadataUrl: metadataUrl,
       );
@@ -112,6 +119,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         yield AccountState.accountReady(Account(
           name: currentAccount.name,
           ethAddress: event.ethAddress,
+          btcAddress: event.btcAddress,
           metaName: metaData.name,
           image: metaData.photo,
         ));
